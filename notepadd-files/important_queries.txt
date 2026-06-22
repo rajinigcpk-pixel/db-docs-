@@ -1,0 +1,149 @@
+Propel
+ 
+https://andreigridnev.medium.com/db-maintenance-commands-in-postgresql-analyze-reindex-vacuum-4a14d75bee6c
+https://www.geeksforgeeks.org/postgresql-psql-commands/
+https://dbschema.com/2020/04/14/postgresql-show-tables/
+https://medium.com/coding-blocks/creating-user-database-and-adding-access-on-postgresql-8bfcd2f4a91e
+ 
+Find the table size --
+ 
+ 
+select pg_size_pretty(pg_relation_size('waybl.booking_inv'))
+ 
+--------------------------------
+select * from waybl.waybl_fin wf where upd_user_id ='RK' and upd_dt >= now() - interval '15 mins'
+ 
+ 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 
+update credit_cntr.cntr set cntr_code ='SFX90000074', upd_dt = now(), upd_by ='VT' where id=900688
+ 
+===========================================================
+ 
+https://www.postgresqltutorial.com/postgresql-administration/postgresql-database-indexes-table-size/
+ 
+ 
+pg_database.datname, pg_size_pretty(pg_database_size(pg_database.datname)) as size from pg_database;
+ 
+-------------------------------------------------------------
+ 
+Display employee details who are getting min, max salaries
+ 
+Solution:
+ 
+SELECT * FROM EMPLOYEE WHERE SAL IN(
+SELECT MIN(SAL) FROM EMPLOYEE
+UNION
+SELECT MAX(SAL) FROM EMPLOYEE);
+ 
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Display all employees, whose salary is more than all “SALESMAN” salaries?
+ 
+Solution:
+SELECT * FROM EMPLOYEE WHERE SAL>ALL(SELECT SAL FROM EMPLOYEE WHERE JOB=’SALESMAN’);
+ 
+ 
+-----------------------
+ 
+Show data_directory;
+ 
+---
+ 
+Select oid, datname from pg_database;
+Select oid, datname from pg_database where datname ='postgres';
+ 
+ 
+All index
+ 
+Select * from pg_class;
+ 
+---------------------------
+ 
+https://www.postgresql.org/docs/current/sql-explain.html
+https://www.postgresql.org/docs/current/using-explain.html.
+ 
+ 
+__________________________
+ 
+check vehicle status
+ 
+Select * from m_lkp_oth.lookup
+ 
+---------------
+cntr_code= Contract code
+ 
+____________________
+Create Role, USER, and superuser
+ 
+Check Role :
+ 
+SELECT rolname FROM pg_roles;
+ 
+https://www.postgresqltutorial.com/postgresql-administration/postgresql-roles/
+ 
+ 
+=============================================================================================================
+Find out the primary key from this Query....
+ 
+----
+select
+	tbl.table_schema,
+	tbl.table_name
+from
+	information_schema.tables tbl
+where
+	table_type = 'BASE TABLE'
+	and table_schema not in ('pg_catalog', 'information_schema', 'public')
+	and not exists (
+	select
+		1
+	from
+		information_schema.key_column_usage kcu
+	where
+		kcu.table_name = tbl.table_name
+		and kcu.table_schema = tbl.table_schema)
+-------------------------------------------------------------		
+
+ 
+Create index ---------
+ 
+CREATE UNIQUE INDEX ak1_booking_waybl ON waybl.booking_waybl USING btree (waybl_num);
+CREATE INDEX ie10_booking_waybl ON waybl.booking_waybl USING btree (dlvry_gateway_branch_id);
+CREATE INDEX ie11_booking_waybl ON waybl.booking_waybl USING btree (dlvry_dt);
+CREATE INDEX ie1_booking_waybl ON waybl.booking_waybl USING btree (booking_req_id);
+CREATE INDEX ie2_booking_waybl ON waybl.booking_waybl USING btree (booking_branch_id);
+CREATE INDEX ie3_booking_waybl ON waybl.booking_waybl USING btree (pickup_dt);
+CREATE INDEX ie4_booking_waybl ON waybl.booking_waybl USING btree (shpmnt_dt);
+CREATE INDEX ie5_booking_waybl ON waybl.booking_waybl USING btree (sfx_prc_cntr_code);
+CREATE INDEX ie6_booking_waybl ON waybl.booking_waybl USING btree (status);
+CREATE INDEX ie7_booking_waybl ON waybl.booking_waybl USING btree (prc_cntr_id);
+CREATE INDEX ie8_booking_waybl ON waybl.booking_waybl USING btree (msa_cust_id);
+CREATE INDEX ie9_booking_waybl ON waybl.booking_waybl USING btree (lower((waybl_num)::text));
+ 
+-- Permissions
+ 
+ALTER TABLE waybl.booking_waybl OWNER TO pi_admin;
+GRANT ALL ON TABLE waybl.booking_waybl TO pi_admin;
+GRANT SELECT, INSERT, UPDATE ON TABLE waybl.booking_waybl TO pi_waybl_app_role;
+GRANT SELECT ON TABLE waybl.booking_waybl TO pi_waybl_usr_role;
+GRANT SELECT, INSERT, DELETE, UPDATE ON TABLE waybl.booking_waybl TO pi_waybl_mgr_role WITH GRANT OPTION;
+GRANT SELECT, INSERT, UPDATE ON TABLE waybl.booking_waybl TO pi_waybl_app_usr;
+GRANT SELECT ON TABLE waybl.booking_waybl TO db_trend_ro_usr;
+ 
+-------------------------------
+ 
+GRANT CONNECT ON DATABASE mydb TO readaccess;
+ 
+postgres-# GRANT USAGE ON SCHEMA public TO readaccess;
+postgres-# GRANT SELECT ON ALL TABLES IN SCHEMA public TO readaccess;
+If you want to grant select permission for specific tables (e.g mytable) run the following command
+ 
+postgres-# GRANT SELECT ON mytable IN SCHEMA public TO readaccess;
+Also Read : Top 5 Database Design Tools
+ 
+ 
+3. Create User
+Finally, we create a PostgreSQL user and assign the newly created role to that user. Update read_user and read_password in commands below with your username and password.
+ 
+postgres-# CREATE USER read_user WITH PASSWORD 'read_password';
+postgres-# GRANT readaccess TO read_user;

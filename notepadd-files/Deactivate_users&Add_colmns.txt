@@ -1,0 +1,42 @@
+ALTER USER rkumar WITH NOLOGIN;
+ALTER USER sify WITH NOLOGIN;
+ALTER USER psingh WITH NOLOGIN;
+ALTER USER asharma WITH NOLOGIN;
+ALTER USER sroy WITH NOLOGIN;
+ALTER USER dkumar WITH NOLOGIN;
+ALTER USER le_ro WITH NOLOGIN;
+ALTER USER skumar WITH NOLOGIN;
+
+
+DROP  USER rkumar;
+DROP  USER sify;
+DROP  USER psingh;
+DROP  USER asharma;
+DROP  USER sroy;
+DROP  USER dkumar;
+DROP USER skumar;
+
+
+gmwprv5&v*aE
+
+
+alter table waybl.booking_waybl add column latitude
+ varchar(100) null,add column longitude  varchar(100) null;
+ 
+ 
+alter table waybl.booking_waybl_log add column latitude
+ varchar(100) null,add column longitude  varchar(100) null;
+ 
+ ALTER TABLE Customers
+DROP COLUMN ContactName;
+ 
+
+alter table waybl.booking_waybl DROP COLUMN latitude
+ ,DROP COLUMN longitude;
+
+
+alter table credit_cntr.mis_col_bil_config_map_hist add column hist_crtd_dt timestamp not null default CURRENT_TIMESTAMP,
+add column ver int4 null,
+add column hist_crtd_by varchar(50) not null;
+
+lWGjsKvHEZVYY3B4eGif

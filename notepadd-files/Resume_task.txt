@@ -1,0 +1,311 @@
+pipeline {
+     agent any	
+     stages {
+        stage("task-uat-associate-er-assoc-air-mgmt-db") {
+            steps {
+			catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+               sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:OSXZU2VMUFFNLBOLORIBH2DKCY --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+            }
+        }
+}		
+	stage("task-uat-billing-bil-allied-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:COXAM45TMBH5HDX4OEG66JVX7Y --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+    stage("task-uat-billing-bil-cmdm-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:2M36OP76IRDEBK37ENWUMG3F7Y --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-booking-pi-booking-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:BY3KU27YWZD5TB4SJX5CLWMZFU --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-booking-pi-manifest-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:MPFN5H6V65A6HOX5KGJRHXFOD4 --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-booking-pi-nic-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:CNLAGUZYMJAUJJLXWDWGQA65ZA --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-booking-pi-payment-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:ITZCC3YGVVEHLHPOWBX32QBYMM --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-booking-pi-recon-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:CPT62JSWERGVJLKCHGJIA6WT3A --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-booking-pi-waybl-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:UFZLTYZDNRCHHHGEDZJXCT4DCA --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-contract-pi-credit-cntr-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:OMS4A423CJBYTEOUVUHIAEFVTY --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-contract-pi-prc-cntr-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:WGIL6V27HNCYHM7ACBODME3YYE --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-contract-pi-retail-cntr-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:FA5LEFLE2NANTFYYBSLNGMHOOQ --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-mdm-pi-addr-mdb") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:ZDJ6QUF27ZBE5JGQQTZDLMNDWU --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-mdm-pi-assoc-mdb") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:2V55BMTQKRDAJCNWM7EJFIL7RI --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-mdm-pi-cust-mdb") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:NKVX76XI4JHQTMVIQ2MRZNCQ5M --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-mdm-pi-geo-zm-mdb") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:EPIAA6T5N5B7FJR4KULF6GONTQ --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-mdm-pi-lkp-oth-mdb") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:KE6Y2F7KOJDYHFL3ZISR545W7M --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-mdm-pi-notification-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:F654DNLHRJH3LDEFFFLGHFMT7M --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-mdm-pi-usr-mgmt-mdb") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:MBQ2DBEQEJHDZFV55VH6CSD6DE --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+
+
+    stage("task-uat-Billing-bil-credit-db") {
+            steps {
+			catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+               sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:VKRTSVUZ2FAP3JGK5IE7PLGAX4 --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+            }
+        }
+}		
+	stage("task-uat-Billing-bil-customers-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:ISPN4PXIYJGUJNSUV4JAIWENAM --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+    stage("task-uat-Billing-bil-einvoicing-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:OYPYFM4DLVACJL2KXHJRCUCHXU --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Billing-bil-receipts-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:6J4UWGIXRRBW7KP7ALHTJJRQRI --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Billing-bil-reports-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:SCDFMMBH2ZDVZDN7P2FHKI52PU --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Billing-bil-retail-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:LDAIFC2B4BCHDL3UM7FM7XT63M --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Billing-bil-usermgmt-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:ZCL6CY4HXZGSFDWQTC2RXSL6RI --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Billing-bil-wms-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:OOJFFD7XTFBBPCFLU2YW4T2XSM --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+
+     stage("task-uat-Associate-er-assoc-air-cntr-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:OCDS6RINYJBNDD27EY2MEOJUVU --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Associate-er-assoc-air-mgmt-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:OSXZU2VMUFFNLBOLORIBH2DKCY --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Associate-pi-assoc-bkng-cntr-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:VEGGZJVOENGUZAZ67NQSQO2R3I --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Associate-er-assoc-bkng-mgmt-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:774APSAKERHRJIUVIEIEEGTPUE --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Associate-er-assoc-cargo-cntr-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:AIFW4LAZFBEH3LY4LX7XVI6HOY --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+
+	stage("task-uat-Associate-pi-assoc-dlvry-cntr-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:A4KLZBBDY5GBTLINWCMMH6BDNA --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Associate-er-assoc-dlvry-mgmt-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:KRTQDYY3ZBCIHPDAN4OEJKELCY --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	 
+    }
+	stage("task-uat-Associate-er-assoc-nrm-cntr-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:GYUVSEHVUFCDHMXB4ETEAQI3N4 --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+        }
+	 }
+	}
+      stage("task-uat-Associate-er-assoc-nrm-mgmt-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:FW77H3HKOFAAJN3MKPE3I3HDZ4 --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+     }
+	 }
+	 
+    }
+    stage("task-uat-billing-bil-customers-db") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:ISPN4PXIYJGUJNSUV4JAIWENAM --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+     }
+	 }
+	 
+    } 
+	stage("task-uat-booking-waybl-nd-log") {
+    steps {
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            sh "aws dms start-replication-task --replication-task-arn arn:aws:dms:ap-south-1:117998157554:task:CRGQXB6HLNDUVAK56Y3FUC54UM --start-replication-task-type resume-processing --profile dms --region ap-south-1"
+     }
+	 }
+	 
+    } 	
+	
+	}
+     }
